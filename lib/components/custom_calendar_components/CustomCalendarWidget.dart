@@ -198,6 +198,13 @@ class CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   }
 
   void _selectToday() {
+    if (!widget.isStart) {
+      if (isSameDay(widget.otherDate!, DateTime.now())) {
+        CustomSnackBar.showSnackBar(
+            context, "Can't pick same day as start date", 3);
+        return;
+      }
+    }
     setState(() {
       _selectedDate = DateTime.now();
     });
