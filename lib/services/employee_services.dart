@@ -3,13 +3,6 @@ import 'package:employee_app/objectbox.g.dart';
 import 'package:employee_app/services/db_service.dart';
 
 class EmployeeServices {
-  // Future<Isar> connectToDb() async {
-  //   final dir = await getApplicationDocumentsDirectory();
-  //   return await Isar.open(
-  //     [EmployeeSchema],
-  //     directory: dir.path,
-  //   );
-  // }
   final Box<Employee> _empBox = ObjectBox.instance.store.box<Employee>();
 
   List<Employee> getAllEmployees() {
@@ -28,7 +21,7 @@ class EmployeeServices {
     }
   }
 
-  Future<bool> deleteEmployee(int id) async {
+  bool deleteEmployee(int id) {
     try {
       return _empBox.remove(id);
     } catch (e) {
@@ -36,7 +29,7 @@ class EmployeeServices {
     }
   }
 
-  Future<bool> addOrUpdateEmployee(Employee e) async {
+  bool addOrUpdateEmployee(Employee e) {
     try {
       _empBox.put(e);
       return true;
@@ -45,7 +38,7 @@ class EmployeeServices {
     }
   }
 
-  Future<bool> addManyEmployees(List<Employee> e) async {
+  bool addManyEmployees(List<Employee> e) {
     try {
       _empBox.putMany(e);
       return true;

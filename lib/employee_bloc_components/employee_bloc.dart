@@ -13,8 +13,7 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
     on<RestoreLastEmployee>(_onRestoreLastEmployee);
   }
 
-  void _onLoadEmployees(
-      LoadEmployees event, Emitter<EmployeeState> emit) async {
+  void _onLoadEmployees(LoadEmployees event, Emitter<EmployeeState> emit) {
     try {
       EmployeeServices services = EmployeeServices();
       final currentEmployees = services.getCurrentEmployees();
@@ -26,7 +25,7 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
   }
 
   void _onRestoreLastEmployee(
-      RestoreLastEmployee event, Emitter<EmployeeState> emit) async {
+      RestoreLastEmployee event, Emitter<EmployeeState> emit) {
     try {
       if (lastDeletedEmployee != null) {
         EmployeeServices().addOrUpdateEmployee(lastDeletedEmployee!);
@@ -38,8 +37,7 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
     }
   }
 
-  void _onDeleteEmployee(
-      DeleteEmployee event, Emitter<EmployeeState> emit) async {
+  void _onDeleteEmployee(DeleteEmployee event, Emitter<EmployeeState> emit) {
     try {
       EmployeeServices().deleteEmployee(event.employeeId);
       add(LoadEmployees());

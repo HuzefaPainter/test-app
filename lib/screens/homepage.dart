@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
         return Scaffold(
           appBar: AppBar(
             title: GestureDetector(
-                onLongPress: () async {
+                onLongPress: () {
                   // testing feature for a long list without manually adding employees
                   Random r = Random();
                   List<Employee> testEmps = names.map((name) {
@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ..id = 0;
                     return e;
                   }).toList();
-                  await EmployeeServices().addManyEmployees(testEmps);
+                  EmployeeServices().addManyEmployees(testEmps);
                   context.read<EmployeeBloc>().add(LoadEmployees());
                 },
                 child: Text(widget.title)),

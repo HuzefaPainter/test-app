@@ -184,7 +184,7 @@ class _EmployeeFormState extends State<EmployeeForm> {
                 ),
               ),
               FormBottomBar(
-                onSave: () async {
+                onSave: () {
                   if (!validForm()) {
                     return;
                   }
@@ -194,8 +194,7 @@ class _EmployeeFormState extends State<EmployeeForm> {
                     ..startDate = startDate
                     ..endDate = endDate
                     ..id = widget.employee?.id ?? 0;
-                  bool success =
-                      await EmployeeServices().addOrUpdateEmployee(e);
+                  bool success = EmployeeServices().addOrUpdateEmployee(e);
                   if (success) {
                     if (mounted) {
                       CustomSnackBar.showSnackBar(
