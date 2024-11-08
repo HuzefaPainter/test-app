@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           body: state is EmployeeLoading
               ? const Center(child: CircularProgressIndicator())
               : state is EmployeeLoaded
-                  ? EmployeesList(state: state, showToast: showToast)
+                  ? EmployeesList(state: state, showSnackBar: showSnackBar)
                   : state is EmployeeError
                       ? Center(child: Text(state.message))
                       : Container(),
@@ -78,8 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  showToast() {
-    CustomToast.showToast(
+  showSnackBar() {
+    CustomSnackBar.showSnackBar(
       context,
       "Employee data has been deleted",
       3,

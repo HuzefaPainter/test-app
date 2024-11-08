@@ -198,7 +198,7 @@ class _EmployeeFormState extends State<EmployeeForm> {
                       await EmployeeServices().addOrUpdateEmployee(e);
                   if (success) {
                     if (mounted) {
-                      CustomToast.showToast(
+                      CustomSnackBar.showSnackBar(
                           context,
                           "Employee was successfully ${widget.employee == null ? "added" : "edited"}!",
                           3);
@@ -207,7 +207,7 @@ class _EmployeeFormState extends State<EmployeeForm> {
                     }
                   } else {
                     if (mounted) {
-                      CustomToast.showToast(
+                      CustomSnackBar.showSnackBar(
                           context, "Error, please try again.", 3);
                     }
                   }
@@ -220,18 +220,18 @@ class _EmployeeFormState extends State<EmployeeForm> {
 
   bool validForm() {
     if (nameController.text.trim().isEmpty) {
-      CustomToast.showToast(context, "Please enter a name", 3);
+      CustomSnackBar.showSnackBar(context, "Please enter a name", 3);
       return false;
     }
     if (!regexCheckForName(nameController.text.trim()) ||
         !regexCheckForName(nameController.text.trim())) {
-      CustomToast.showToast(context,
+      CustomSnackBar.showSnackBar(context,
           "*Only alphabets or some special characters (. , - ') allowed", 3);
       return false;
     }
 
     if ((role ?? "").isEmpty) {
-      CustomToast.showToast(context, "Please select a role", 3);
+      CustomSnackBar.showSnackBar(context, "Please select a role", 3);
       return false;
     }
 

@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 
 class EmployeesList extends StatelessWidget {
   final EmployeeLoaded state;
-  final Function showToast;
+  final Function showSnackBar;
   const EmployeesList(
-      {super.key, required this.state, required this.showToast});
+      {super.key, required this.state, required this.showSnackBar});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class EmployeesList extends StatelessWidget {
                 ...ListTile.divideTiles(
                     context: context,
                     tiles: state.currentEmployees.map((e) =>
-                        EmployeeTile(employee: e, showToast: showToast))),
+                        EmployeeTile(employee: e, showToast: showSnackBar))),
                 state.previousEmployees.isNotEmpty
                     ? const HomepageHeading(text: "Previous employees")
                     : const SizedBox.shrink(),
@@ -40,7 +40,7 @@ class EmployeesList extends StatelessWidget {
                     context: context,
                     tiles: state.previousEmployees.map((e) => EmployeeTile(
                           employee: e,
-                          showToast: showToast,
+                          showToast: showSnackBar,
                         )))
               ]),
             )),

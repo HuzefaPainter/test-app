@@ -177,7 +177,7 @@ class CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                           } else {
                             if (_selectedDate != null &&
                                 widget.otherDate!.isAfter(_selectedDate!)) {
-                              CustomToast.showToast(
+                              CustomSnackBar.showSnackBar(
                                   context,
                                   "Please select an end date later than the start date.",
                                   3);
